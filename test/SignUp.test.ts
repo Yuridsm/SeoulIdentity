@@ -1,11 +1,13 @@
 import UserRepositoryInMemory from "../src/Infrastructure/Repository/InMemory/UserRepositoryInMemory";
+import SignUpUseCase from "../src/application/UseCase/SignUpUseCase";
 import SingUpUseCase from "../src/application/UseCase/SignUpUseCase";
 
 test("Deve fazer o singup", async function () {
     // Arrange
     const userRepository = new UserRepositoryInMemory();
 
-    const signup = new SingUpUseCase();
+    const signup = new SignUpUseCase(userRepository);
+    
     const inputSignUp = {
         name: "Yuri Melo",
         email: "yuri@mail.com",
@@ -14,7 +16,7 @@ test("Deve fazer o singup", async function () {
     }
     
     // Act
-    await signup.Execute(inputSignUp);
+    await signup.execute(inputSignUp);
 
     // Assert
     const login = new Login();
