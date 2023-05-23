@@ -1,4 +1,4 @@
-import IAggregateRoot from "../../Core/entity/IAggregateRoot";
+import IAggregateRoot from "../../core/entity/IAggregateRoot";
 import IRepository from "./IRepository";
 
 export default interface IUserRepository extends IRepository<IAggregateRoot> {

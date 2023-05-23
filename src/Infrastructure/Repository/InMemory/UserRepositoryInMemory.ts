@@ -1,5 +1,5 @@
-import User from "../../../Core/entity/User";
-import IUserRepository from "../../../application/Repository/IUserRepository";
+import User from "../../../core/entity/User";
+import IUserRepository from "../../../application/repository/IUserRepository";
 
 export default class UserRepositoryInMemory implements IUserRepository {
     

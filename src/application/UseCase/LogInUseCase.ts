@@ -1,5 +1,5 @@
-import User from "../../Core/entity/User";
-import IUserRepository from "../Repository/IUserRepository"
+import User from "../../core/entity/User";
+import IUserRepository from "../repository/IUserRepository"
 
 export default class LogInUseCase {
     constructor(readonly userRepository: IUserRepository) {

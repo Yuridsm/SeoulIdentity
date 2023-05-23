@@ -1,6 +1,6 @@
 import UserRepositoryInMemory from "../../src/infrastructure/repository/inMemory/UserRepositoryInMemory";
-import LogInUseCase from "../../src/application/UseCase/LogInUseCase";
-import SignUpUseCase from "../../src/application/UseCase/SignUpUseCase";
+import LogInUseCase from "../../src/application/useCase/LogInUseCase";
+import SignUpUseCase from "../../src/application/useCase/SignUpUseCase";
 
 test("Deve fazer o singup", async function () {
     // Arrange

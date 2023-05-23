@@ -19,4 +19,4 @@ export default class User implements IAggregateRoot {
         // Business Rule 04
         if (age < 18) throw new Error("Invalid Age");
     }
-}
+};
