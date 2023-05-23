@@ -1,1 +1,1 @@
-export default interface IAggregateRoot {}
+export default interface IAggregateRoot {};

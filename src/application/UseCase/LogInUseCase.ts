@@ -1,4 +1,3 @@
-import IAggregateRoot from "../../Core/Entity/IAggregateRoot";
 import User from "../../Core/Entity/User";
 import IUserRepository from "../Repository/IUserRepository"
 
@@ -11,9 +10,11 @@ export default class LogInUseCase {
         
         if (!user) throw new Error("Authentication failed.");
 
-        if (user.password !== input.password)
-        {
- 
+        if ((user as User).password !== input.password) throw new Error("Authentication failed.");
+
+        return {
+            name: "Yuri Melo",
+            token: "123"
         }
     }
 }

@@ -12,4 +12,4 @@ export default class UserRepositoryInMemory implements IUserRepository {
     async save(aggregate: User): Promise<void> {
         this.users.push(aggregate);
     }
-}
+};
