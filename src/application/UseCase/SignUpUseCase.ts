@@ -1,4 +1,4 @@
-import User from "../../Core/Entity/User";
+import User from "../../Core/entity/User";
 import IUserRepository from "../Repository/IUserRepository"
 
 export default class SingUpUseCase {
