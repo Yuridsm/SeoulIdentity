@@ -1,4 +1,4 @@
-import User from "../../src/Core/Entity/User";
+import User from "../../src/Core/entity/User";
 
 test("Deve criar um novo user", function() {
     const user = new User("Yuri Melo", "yuri@mail.com", "12345678", 25);
