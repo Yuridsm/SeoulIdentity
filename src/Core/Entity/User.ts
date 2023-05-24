@@ -10,6 +10,6 @@ export default class User implements IAggregateRoot {
     }
 
     static Factory(name: string, email: string, password: string, age: number) {
-        new User(name, new Email(email), password, age);
+        new User(name, new Email(email), password, age)
     }
 };
