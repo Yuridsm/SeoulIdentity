@@ -9,12 +9,27 @@ export default class User implements IAggregateRoot {
         readonly email: Email,
         readonly password: Password,
         readonly age: number) {
+        if (age < 18) throw new Error("Invalid parameter");
     }
 
     static async Factory(name: string, email: string, password: string, age: number) : Promise<User> {
-        if (age < 18) throw new Error("Invalid parameter");
 
         return new User(new Name(name), new Email(email), await Password.GeneratePassword(password, "salt"), age);
+    }
+
+    /**
+     * Used for building a Existing User.
+     * 
+     * Commom Use Case
+     * - Probably, you will want to build a user from database's table or document.
+     */
+    static BuildExistingUser(name: string, email: string, hashedPasswork: string, salt: string, age: number): User {
+        return new User(
+            new Name(name),
+            new Email(email),
+            new Password(hashedPasswork, salt),
+            age
+        );
     }
 
     async validatePassword (password: string): Promise<boolean> {
