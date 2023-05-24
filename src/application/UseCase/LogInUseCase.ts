@@ -1,4 +1,4 @@
-import TokenGeneratorService from "../../core/services/TokenGeneratorService";
+import TokenGeneratorAdapter from "../../core/adapters/TokenGeneratorAdapter";
 import IUserRepository from "../repository/IUserRepository"
 
 export default class LogInUseCase {
@@ -14,7 +14,7 @@ export default class LogInUseCase {
 
         if (!isValidPassword) throw new Error("Authentication failed.");
 
-        const tokenGenerator = new TokenGeneratorService("top-secret-key");
+        const tokenGenerator = new TokenGeneratorAdapter("top-secret-key");
         const token = tokenGenerator.generate(user, 100000, new Date("2023-05-24T18:59:59"));
 
         return {

@@ -1,7 +1,7 @@
 import User from "../entity/User";
 import { sign, verify } from "jsonwebtoken";
 
-export default class TokenGeneratorService {
+export default class TokenGeneratorAdapter {
     constructor(readonly key: string) {
     }
 
