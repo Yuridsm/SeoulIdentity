@@ -1,18 +1,15 @@
 import { pbkdf2, randomBytes } from "crypto";
 
 export default class Password {
-    private readonly _value: string;
-    private readonly _salt: string | undefined;
+    
+    constructor (readonly value: string, readonly salt: string) {
 
-    constructor (password: string, salt?: string) {
-
-        if (password.length < 8) throw new Error("Invalid parameter");
-
-        this._value = password;
-        this._salt = salt;
+        if (value.length < 8) throw new Error("Invalid parameter");
     }
 
-    static async Factory(password: string, salt?: string): Promise<Password> {
+    static async GeneratePassword(password: string, salt?: string): Promise<Password> {
+        if (password.length < 8) throw new Error("Invalid parameter");
+
         const generatedSalt = salt || randomBytes(20).toString("hex");
 
         return new Promise((resolve) => {
@@ -23,10 +20,18 @@ export default class Password {
     }
 
     getValue(): string {
-        return this._value;
+        return this.value;
     }
 
-    getSalt(): string | undefined {
-        return this._salt;
+    getSalt(): string {
+        return this.salt;
+    }
+
+    async validate(planPassword: string): Promise<boolean> {
+        return new Promise((resolve) => {
+            pbkdf2(planPassword, this.salt, 100, 64, "sha512", (error, value) => {
+                resolve(this.value === value.toString("hex"));
+            });
+        });
     }
 }

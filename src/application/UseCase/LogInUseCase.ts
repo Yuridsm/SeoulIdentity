@@ -1,3 +1,4 @@
+import TokenGeneratorService from "../../core/services/TokenGeneratorService";
 import IUserRepository from "../repository/IUserRepository"
 
 export default class LogInUseCase {
@@ -9,11 +10,16 @@ export default class LogInUseCase {
         
         if (!user) throw new Error("Authentication failed.");
 
-        if (user.password.getValue() !== input.password) throw new Error("Authentication failed.");
+        const isValidPassword = await user.validatePassword(input.password);
+
+        if (!isValidPassword) throw new Error("Authentication failed.");
+
+        const tokenGenerator = new TokenGeneratorService("top-secret-key");
+        const token = tokenGenerator.generate(user, 100000, new Date("2023-05-24T18:59:59"));
 
         return {
             name: user.name.getValue(),
-            token: "123456"
+            token: token
         }
     }
 }
