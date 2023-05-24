@@ -6,7 +6,7 @@ export default class SingUpUseCase {
     }
 
     async execute(input: Input) : Promise<void> {
-        const user = new User(input.name, input.email, input.password, input.age);
+        const user = User.Factory(input.name, input.email, input.password, input.age);
         await this.userRepository.save(user);
     }
 }

@@ -1,4 +1,3 @@
-import User from "../../core/entity/User";
 import IUserRepository from "../repository/IUserRepository"
 
 export default class LogInUseCase {
@@ -10,11 +9,11 @@ export default class LogInUseCase {
         
         if (!user) throw new Error("Authentication failed.");
 
-        if ((user as User).password !== input.password) throw new Error("Authentication failed.");
+        if (user.password.getValue() !== input.password) throw new Error("Authentication failed.");
 
         return {
-            name: "Yuri Melo",
-            token: "123"
+            name: user.name.getValue(),
+            token: "123456"
         }
     }
 }

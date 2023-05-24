@@ -7,5 +7,5 @@ test("Deve criar um E-mail válido", function() {
 });
 
 test("Não deve criar um E-mail inválido", function() {
-    expect(() =>  new Email("yuri@mail")).toThrow(new Error("Invalid Parameter"))
+    expect(() =>  new Email("yuri@mail")).toThrow(new Error("Invalid parameter"))
 });

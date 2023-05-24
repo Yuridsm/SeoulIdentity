@@ -26,7 +26,7 @@ test("Deve fazer o singup", async function () {
     }
     const output = await login.execute(inputLogIn);
     expect(output.name).toBe("Yuri Melo");
-    expect(output.token).toBe("123");
+    expect(output.token).toBe("123456");
 });
 
 // test("Não deve fazer o singup se o nome for inválido", async function () {

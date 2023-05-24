@@ -5,7 +5,7 @@ export default class Email {
 
         // Busines Rule Applied to E-mail
         if(!String(email).toLowerCase().match(/^[\w-]+(\.[\w-]+)*@([a-zA-Z0-9-]+\.)+[a-zA-z]{2,}$/)) {
-            throw new Error("Invalid Parameter")
+            throw new Error("Invalid parameter")
         }
 
         this.value = email;
